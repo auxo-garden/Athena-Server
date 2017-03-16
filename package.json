@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/iticapstones17/Athena-Server/issues"
   },
-  "homepage": "https://github.com/iticapstones17/Athena-Server#readme"
+  "homepage": "https://github.com/iticapstones17/Athena-Server#readme",
+  "dependencies": {
+    "express": "^4.15.2"
+  }
 }
