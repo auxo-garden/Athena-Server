@@ -1,9 +1,8 @@
 const express = require('express');
+const routes = require('./main/routes.js');
 
 var app = express();
-
-app.get('/status', (req, res)=>{
-  res.send("Ayyyy Lmao\n");
-});
+routes(app);
 
 app.listen(process.env.PORT || 8080);
+console.log("Server is running");
