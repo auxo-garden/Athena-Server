@@ -6,4 +6,4 @@ app.get('/status', (req, res)=>{
   res.send("Ayyyy Lmao\n");
 });
 
-app.listen(8080);
+app.listen(process.env.PORT || 8080);
