@@ -1,0 +1,19 @@
+{
+  "name": "athena-server",
+  "version": "0.0.1",
+  "description": "AuxoGarden's Backend",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iticapstones17/Athena-Server.git"
+  },
+  "author": "AUXO Team",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iticapstones17/Athena-Server/issues"
+  },
+  "homepage": "https://github.com/iticapstones17/Athena-Server#readme"
+}
