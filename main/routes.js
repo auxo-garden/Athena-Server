@@ -5,6 +5,11 @@ const init = function RouteHandler(app) {
     res.send("Ayyyy Lmao\n");
     console.log('req.ip: ' + req.ip);
     console.log('req.hostname: ' + req.hostname);
+    request.get({
+      url: req.ip+'/status'
+    }, (error, response, body)=>{
+      console.log("Response from %s: %s", req.ip, body);
+    });
   });
 }
 
