@@ -1,0 +1,65 @@
+﻿<!doctype html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="container">
+
+        <form action="" method="post">
+            <bs-form-group>
+                <label for="zipcode">Zipcode:</label>
+                <input type="text" id="zipcode" name="zipcode" placeholder="XXXXX">
+            </bs-form-group>
+
+            <input type="submit" value="Get Plants" />
+        </form>
+
+        <% if (data) { %>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Binomial Name</th>
+                    <th>Sunlight</th>
+                    <th>Soil</th>
+                    <th>Water</th>
+                    <th>Height</th>
+                    <th>Spread</th>
+                    <th>Germinate</th>
+                    <th>Space</th>
+                    <th>Grow Time</th>
+                    <th>Min Temp</th>
+                    <th>Max Temp</th>
+                </tr>
+            </thead>
+            <% for(var i=0; i < data.length; i++) { %>
+        <tr>
+            <td><%= data[i].id %></td>
+            <td><%= data[i].name %></td>
+            <td><%= data[i].binomial %></td>
+            <td><%= data[i].sunlight %></td>
+            <td><%= data[i].soil %></td>
+            <td><%= data[i].water %></td>
+            <td><%= data[i].height %></td>
+            <td><%= data[i].spread %></td>
+            <td><%= data[i].germinate %></td>
+            <td><%= data[i].space %></td>
+            <td><%= data[i].growTime %></td>
+            <td><%= data[i].minTemp %></td>
+            <td><%= data[i].maxTemp %></td>
+        </tr>
+            <% } %>
+        </table>
+        <% } %>
+
+        <div class="jumbotron text-center">
+            <a href="/" class="btn btn-default"><span class="fa fa-user"></span>Home</a>
+        </div>
+
+    </div>
+</body>
+</html>
