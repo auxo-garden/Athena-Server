@@ -59,6 +59,10 @@ var Plant = sequelize.define('Plants', {
     location: {
         type: Sequelize.BOOLEAN,
         field: 'LOCATION'
+    },
+    image: {
+        type: Sequelize.STRING,
+        field: 'IMAGE'
     }
 }, {
         freezeTableName: true,

@@ -135,7 +135,7 @@ const init = function RouteHandler(app, io) {
     app.post('/garden', (req, res) => {
         var targetGarden = req.body.garden;
 
-        var query = "SELECT Plants.NAME AS name FROM Gardens, Plants WHERE Gardens.PLANTID = Plants.ID AND Gardens.ID = " + targetGarden + ";";
+        var query = "SELECT Plants.NAME AS name, Plants.IMAGE AS image FROM Gardens, Plants WHERE Gardens.PLANTID = Plants.ID AND Gardens.ID = " + targetGarden + ";";
 
         db.sequelize.query(query, { type: db.sequelize.QueryTypes.SELECT })
             .then(function (gardens) {
@@ -165,23 +165,34 @@ const init = function RouteHandler(app, io) {
         });
     });
 
+    // Add a new garden to the database
+    app.post('/gardeninsert', (req, res) => {
+        var targetGarden = req.body.garden;
+        var targetUser = req.body.user;
+        var plants = req.body.plants;
+        var location = req.body.location;
+
+        var plantArray = JSON.parse("[" + plants + "]");
+
+        for (var i = 0; i < plantArray.length; i++) {
+            var gardens = Garden.create({
+                id: targetGarden,
+                userid: targetUser,
+                plantId: plantArray[i],
+                location: location
+            });
+            gardens.then(function () {
+                res.send("insertion complete");
+            });
+        }
+    });
+
     // Updates the moisture reading from the sensor
     app.post('/sensor', (req, res) => {
         moistureReading = req.body.moisture;
 
         res.send('success');
     });
-
-    /*
-    io.on('connection', (socket) => {
-        socket.emit('test', { message: 'success', id: socket.id });
-
-        socket.on('waterReading', function (data) {
-            moistureReading = data.water;
-        });
-        
-    });
-    */
 }
 
 module.exports = init;
