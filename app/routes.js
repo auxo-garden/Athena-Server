@@ -166,8 +166,9 @@ const init = function RouteHandler(app, io) {
         socket.on('waterReading', function (data) {
             moistureReading = data.water;
         });
-        */
+        
     });
+    */
 }
 
 module.exports = init;
