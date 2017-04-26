@@ -19,6 +19,10 @@ var Garden = sequelize.define('Gardens', {
     location: {
         type: Sequelize.BOOLEAN,
         field: 'LOCATION'
+    },
+    name: {
+        type: Sequelize.STRING,
+        field: 'NAME'
     }
 }, {
         freezeTableName: true,

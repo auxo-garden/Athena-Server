@@ -171,6 +171,7 @@ const init = function RouteHandler(app, io) {
         var targetUser = req.body.user;
         var plants = req.body.plants;
         var location = req.body.location;
+        var name = req.body.name;
 
         var plantArray = JSON.parse("[" + plants + "]");
 
@@ -179,11 +180,29 @@ const init = function RouteHandler(app, io) {
                 id: targetGarden,
                 userid: targetUser,
                 plantId: plantArray[i],
-                location: location
+                location: location,
+                name: name
             });
             gardens.then(function () {
                 res.send("insertion complete");
             });
+        }
+    });
+
+    // Return a list of all plants in the database
+    app.post('/plantlist', (req, res) => {
+        var plants = Plant.findAll({
+            include: [{ all: true }],
+            raw: true
+        });
+
+        if (plants != null) {
+            plants.then(function () {
+                res.send({ data: plants._rejectionHandler0 });
+            });
+        }
+        else {
+            res.send({ data: null });
         }
     });
 
