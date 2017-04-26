@@ -55,6 +55,10 @@ var Plant = sequelize.define('Plants', {
     maxTemp: {
         type: Sequelize.INTEGER,
         field: 'MAX_TEMPERATURE'
+    },
+    location: {
+        type: Sequelize.BOOLEAN,
+        field: 'LOCATION'
     }
 }, {
         freezeTableName: true,
