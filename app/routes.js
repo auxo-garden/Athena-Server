@@ -2,6 +2,7 @@ const Plant = require('../app/models/plant');
 const User = require('../app/models/user');
 const Garden = require('../app/models/garden');
 const request = require('request');
+var db = require('../config/database');
 
 var moistureReading = -1; // The current moisture reading from the sensor, updated from the waterReading socket event.
 
@@ -133,6 +134,18 @@ const init = function RouteHandler(app, io) {
     // Return the current plants inside user's garden
     app.post('/garden', (req, res) => {
         var targetGarden = req.body.garden;
+
+        var query = "SELECT Plants.NAME AS name FROM Gardens, Plants WHERE Gardens.PLANTID = Plants.ID AND Gardens.ID = " + targetGarden + ";";
+
+        db.sequelize.query(query, { type: db.sequelize.QueryTypes.SELECT })
+            .then(function (gardens) {
+                if (gardens != null) {
+                    res.send({ plants: gardens });
+                }
+                else {
+                    res.send({ plants: null });
+                }
+            })
     });
 
     // Return the current location of user's garden
