@@ -152,19 +152,21 @@ const init = function RouteHandler(app, io) {
         });
     });
 
-    // Datatransfer test route
-    app.post('/test', (req, res) => {
-        console.log("data: " + req.body);
+    // Updates the moisture reading from the sensor
+    app.post('/sensor', (req, res) => {
+        moistureReading = req.body.moisture;
 
         res.send('success');
     });
 
+    /*
     io.on('connection', (socket) => {
         socket.emit('test', { message: 'success', id: socket.id });
 
         socket.on('waterReading', function (data) {
             moistureReading = data.water;
         });
+        */
     });
 }
 
